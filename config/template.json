@@ -1,4 +1,5 @@
 {
+    "statusPage": "https://stats.uptimerobot.com",
     "discord": {
         "token": "",
         "loggingChannel": "",

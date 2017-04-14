@@ -23,10 +23,10 @@ client.on('ready', () => {
  	else discordClientCBS.push(cb);
  };
 
- const logToDiscord = (message, color, critical, extraFields, cb = ()=>{}) => {
+ const logToDiscord = (message, critical, extraFields, cb = ()=>{}) => {
  	getDiscordClient(() => {
  		let richEmbed = new Discord.RichEmbed();
- 		richEmbed.setAuthor("Musare Logger", "https://uptimerobot.com/assets/ico/favicon.ico", "https://status.musare.com");
+ 		richEmbed.setAuthor("Musare Logger", "https://uptimerobot.com/assets/ico/favicon.ico", config.get("statusPage"));
         if (critical === true) {
             richEmbed.setColor("#d9534f");
         } else if (critical === false) {
@@ -38,7 +38,7 @@ client.on('ready', () => {
  		richEmbed.setThumbnail("https://pbs.twimg.com/profile_images/453444308650061824/G22d2Q6n_400x400.png");
  		richEmbed.setTimestamp(new Date());
  		richEmbed.setTitle("MUSARE ALERT");
- 		richEmbed.setURL("https://status.musare.com");
+ 		richEmbed.setURL(config.get("statusPage"));
         if(typeof extraFields !== 'undefined' && extraFields) {
             extraFields.forEach((extraField) => {
      			richEmbed.addField(extraField.name, extraField.value, extraField.inline);
@@ -54,9 +54,13 @@ client.on('ready', () => {
 
 app.use(myParser.urlencoded({extended : true}));
 app.post("/", function(request, response) {
-    console.log(request.body);
-    console.log(request.body.alertType);
-    logToDiscord("The backend server started successfully.", "#00AA00", true, [{name: "Name:", value: request.body.monitorFriendlyName, inline: false}, {name: "URL:", value: request.body.monitorURL, inline: false}, {name: "Status:", value: request.body.alertTypeFriendlyName, inline: true}]);
+    let alertType = request.body.alertTypeFriendlyName;
+    if (alertType === "Up") {
+        var critical = false;
+    } else if (alertType === "Down") {
+        var critical = true;
+    }
+    logToDiscord("Uptime Robot notification", critical, [{name: "Name:", value: request.body.monitorFriendlyName, inline: false}, {name: "URL:", value: request.body.monitorURL, inline: false}, {name: "Status:", value: request.body.alertTypeFriendlyName, inline: false}]);
 });
 
 app.listen(3001);
