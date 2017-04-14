@@ -3,6 +3,8 @@
     "alerterName": "Uptime Robot",
     "alertName": "Uptime Robot Alert",
     "alertDescription": "Uptime Robot notification",
+    "favicon": "https://uptimerobot.com/assets/ico/favicon.ico",
+    "thumbail": "https://pbs.twimg.com/profile_images/453444308650061824/G22d2Q6n_400x400.png",
     "listenerPort": 3001,
     "discord": {
         "token": "",

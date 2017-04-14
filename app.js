@@ -26,7 +26,7 @@ client.on('ready', () => {
  const logToDiscord = (message, critical, extraFields, cb = ()=>{}) => {
  	getDiscordClient(() => {
  		let richEmbed = new Discord.RichEmbed();
- 		richEmbed.setAuthor(config.get("alerterName"), "https://uptimerobot.com/assets/ico/favicon.ico", config.get("statusPage"));
+ 		richEmbed.setAuthor(config.get("alerterName"), config.get("favicon"), config.get("statusPage"));
         if (critical === true) {
             richEmbed.setColor("#d9534f");
         } else if (critical === false) {
@@ -35,7 +35,7 @@ client.on('ready', () => {
  		richEmbed.setDescription(message);
  	// 	richEmbed.setFooter("Footer", "https://musare.com/favicon-194x194.png");
  	// 	richEmbed.setImage("https://musare.com/favicon-194x194.png");
- 		richEmbed.setThumbnail("https://pbs.twimg.com/profile_images/453444308650061824/G22d2Q6n_400x400.png");
+ 		richEmbed.setThumbnail(config.get("thumbail"));
  		richEmbed.setTimestamp(new Date());
  		richEmbed.setTitle(config.get("alertName"));
  		richEmbed.setURL(config.get("statusPage"));
