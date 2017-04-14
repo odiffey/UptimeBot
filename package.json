@@ -1,0 +1,20 @@
+{
+  "name": "uptimebot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Owen Diffey",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "config": "^1.25.1",
+    "discord.js": "^11.0.0",
+    "express": "^4.15.2",
+    "fs": "0.0.1-security",
+    "http": "0.0.0",
+    "node-webhooks": "^1.1.32"
+  }
+}
