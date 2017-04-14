@@ -26,7 +26,7 @@ client.on('ready', () => {
  const logToDiscord = (message, critical, extraFields, cb = ()=>{}) => {
  	getDiscordClient(() => {
  		let richEmbed = new Discord.RichEmbed();
- 		richEmbed.setAuthor("Musare Logger", "https://uptimerobot.com/assets/ico/favicon.ico", config.get("statusPage"));
+ 		richEmbed.setAuthor(config.get("alerterName"), "https://uptimerobot.com/assets/ico/favicon.ico", config.get("statusPage"));
         if (critical === true) {
             richEmbed.setColor("#d9534f");
         } else if (critical === false) {
@@ -37,7 +37,7 @@ client.on('ready', () => {
  	// 	richEmbed.setImage("https://musare.com/favicon-194x194.png");
  		richEmbed.setThumbnail("https://pbs.twimg.com/profile_images/453444308650061824/G22d2Q6n_400x400.png");
  		richEmbed.setTimestamp(new Date());
- 		richEmbed.setTitle("MUSARE ALERT");
+ 		richEmbed.setTitle(config.get("alertName"));
  		richEmbed.setURL(config.get("statusPage"));
         if(typeof extraFields !== 'undefined' && extraFields) {
             extraFields.forEach((extraField) => {
@@ -60,7 +60,7 @@ app.post("/", function(request, response) {
     } else if (alertType === "Down") {
         var critical = true;
     }
-    logToDiscord("Uptime Robot notification", critical, [{name: "Name:", value: request.body.monitorFriendlyName, inline: false}, {name: "URL:", value: request.body.monitorURL, inline: false}, {name: "Status:", value: request.body.alertTypeFriendlyName, inline: false}]);
+    logToDiscord(config.get("alertDescription"), critical, [{name: "Name:", value: request.body.monitorFriendlyName, inline: false}, {name: "URL:", value: request.body.monitorURL, inline: false}, {name: "Status:", value: request.body.alertTypeFriendlyName, inline: false}]);
 });
 
-app.listen(3001);
+app.listen(config.get("listenerPort"));

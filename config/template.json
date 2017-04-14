@@ -1,5 +1,9 @@
 {
     "statusPage": "https://stats.uptimerobot.com",
+    "alerterName": "Uptime Robot",
+    "alertName": "Uptime Robot Alert",
+    "alertDescription": "Uptime Robot notification",
+    "listenerPort": 3001,
     "discord": {
         "token": "",
         "loggingChannel": "",
