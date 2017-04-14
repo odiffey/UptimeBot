@@ -61,6 +61,7 @@ app.post("/", function(request, response) {
         var critical = true;
     }
     logToDiscord(config.get("alertDescription"), critical, [{name: "Name:", value: request.body.monitorFriendlyName, inline: false}, {name: "URL:", value: request.body.monitorURL, inline: false}, {name: "Status:", value: request.body.alertTypeFriendlyName, inline: false}]);
+    response.end('{"success" : "Logged Successfully", "status" : 200}');
 });
 
 app.listen(config.get("listenerPort"));
