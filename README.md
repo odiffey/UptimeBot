@@ -13,3 +13,6 @@ Uptime Robot Discord bot
 
 ## Starting the bot
 1. Run `nodemon` in the repository root
+
+## Credit 
+Based off of code by KrisVos130 in [MusareNode](https://github.com/Musare/MusareNode) 
