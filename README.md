@@ -1,6 +1,9 @@
 # UptimeBot
 Uptime Robot Discord bot
 
+## THIS BOT NO LONGER WORKS
+Webhooks are a good replacement for this bot and as such wont be updated to fix compatibility issues.
+
 ## Installation
 1. Clone this repository - `git clone https://github.com/odiffey/UptimeBot.git`
 2. Enter repository directory - `cd UptimeBot`
